@@ -15,7 +15,6 @@ namespace WuteV
                 if (revinput == input) Console.WriteLine($"String is Palindrome Input = {input} and Output= {revinput}");   
                 else Console.WriteLine($"String is not Palindrome Input = {input} and Output= {revinput}"); 
             }
-            Console.ReadLine();
         } 
     }
 }
