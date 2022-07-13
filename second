@@ -1,1 +1,22 @@
+using System;
 
+namespace WuteV
+{
+    public class Program
+    {
+        static void Main(string[] args)  
+        {  
+            Console.Write("Enter the amount in cents: ");
+            int cents = Convert.ToInt32(Console.ReadLine());
+            int _50s = cents / 50;
+            int _20s = (cents - (_50s * 50)) / 20;
+            int _10s = (cents - (_50s * 50) - (_20s * 20)) / 10;
+            int _5s = (cents - (_50s * 50) - (_20s * 20) - (_10s * 10)) / 5;
+            int _1s = cents - (_50s * 50) - (_20s * 20) - (_10s * 10) - (_5s * 5);
+            Console.Write($"in order to split the amount, u would need {_50s} 50 cent(s), {_20s} 20 cent(s), {_10s} 10 cent(s), {_5s} 5 cent(s) and {_1s} 1 cent(s).");
+            //tetrebi centebshi gadaviyvane, 
+            //inglisurad mirchevnia programis dawera.
+            //imedia yvelaze martivi gza avirchie.
+        } 
+    }
+}
