@@ -25,7 +25,7 @@ namespace WuteV
             }
             if (n % 2 == 1) Console.Write($"the possible number of splits are {seq1}");
             else Console.Write($"the possible number of splits are {seq2}");
-            //jesus christ I butchered the whole thing
+            //jesus christ I really butchered the whole thing
         } 
     }
 }
