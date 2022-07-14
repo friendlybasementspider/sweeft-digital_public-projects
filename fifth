@@ -22,10 +22,10 @@ namespace WuteV
                     if (i % 2 == 1) seq1 = seq1 + seq2;
                     else if (i % 2 == 0) seq2 = seq1 + seq2;
                 }
-            }
             if (n % 2 == 1) Console.Write($"the possible number of splits are {seq1}");
             else Console.Write($"the possible number of splits are {seq2}");
-            //jesus christ I really butchered the whole thing
+            //it's a bit slow, but, yk.
+            }
         } 
     }
 }
