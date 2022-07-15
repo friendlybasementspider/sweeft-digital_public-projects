@@ -23,7 +23,7 @@ namespace WuteV
                     else counter = i;
                 }
             }
-            Console.Write($"{counter-1} is the smalest whole number, that isn't included in the array.");
+            Console.Write($"{counter} is the smalest whole number, that isn't included in the array.");
         } 
     }
 }
