@@ -43,7 +43,7 @@ VALUES ('nana', 'chixoria', 'mdedrobiti', 'fizika', 8.1),
 
 
 SELECT * FROM pupils
-right JOIN teachers ON pupils.class = teachers.pupil_id;
+JOIN teachers ON pupils.class = teachers.pupil_id;
 
 6.2)
 
