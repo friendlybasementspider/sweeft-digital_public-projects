@@ -10,6 +10,7 @@ namespace WuteV
             string Parenthcheck = Console.ReadLine();
             char[] Parentharray = Parenthcheck.ToCharArray();
             int counter = 0;
+            int indicator = 0;
             for (int i = 0; i < Parenthcheck.Length; i++) 
             {
                 if (Parentharray[i] == '(') counter++;
@@ -17,10 +18,12 @@ namespace WuteV
                 else if (counter < 0) 
                 {
                     Console.Write("the Parentheses in the string aren't mathematically correct.");
+                    indicator = 1;
                     break;
                 }
             }
             if (counter == 0) Console.Write("the Parentheses in the string are mathematically correct.");
+            else if (indicator == 1) ;
             else Console.Write("the Parentheses in the string aren't mathematically correct.");
         } 
     }
