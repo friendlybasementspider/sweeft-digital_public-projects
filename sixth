@@ -1,0 +1,50 @@
+6.1)
+
+CREATE DATABASE school_system;
+USE school_system;
+
+CREATE TABLE pupils (
+ id INT NOT NULL AUTO_INCREMENT,
+ name VARCHAR(255) NOT NULL,
+ lastname VARCHAR(255) NOT NULL,
+ sex VARCHAR(255),
+ class INT NOT NULL,
+ PRIMARY KEY (id)
+);
+
+USE school_system;
+CREATE TABLE teachers (
+ id INT NOT NULL AUTO_INCREMENT,
+ name VARCHAR(255) NOT NULL,
+ lastname VARCHAR(255) NOT NULL,
+ sex VARCHAR(255),
+ subject VARCHAR(255) NOT NULL,
+ pupil_id INT NOT NULL,
+ PRIMARY KEY (id),
+ FOREIGN KEY (pupil_id) REFERENCES pupils(id)
+);
+
+INSERT INTO pupils (name, lastname, sex, class)
+VALUES ('mari', '____', 'mdedrobiti', 8.1),
+       ('gvanca', '____', 'mdedrobiti', 8.1),
+       ('nika', '___', 'mamrobiti', 8.1),
+       ('giorgi', '___', 'mamrobiti', 8.1),
+       ('luka', '___', 'mamrobiti', 8.1),
+       ('nodari', '___', 'mamrobiti', 8.2),
+       ('zura', '___', 'mamrobiti', 8.2),
+       ('lika', '___', 'mdedrobiti', 8.2),
+       ('elene', '___', 'mdedrobiti', 8.2),
+       ('gio', '___', 'mamrobiti', 8.2);
+       
+INSERT INTO teachers (name, lastname, sex, subject, pupil_id)
+VALUES ('nana', 'chixoria', 'mdedrobiti', 'fizika', 8.1),
+       ('zurabi', 'kacitadze', 'mamrobiti', 'qimia', 8.2);
+
+
+
+SELECT * FROM pupils
+right JOIN teachers ON pupils.class = teachers.pupil_id;
+
+6.2)
+
+SELECT * FROM teachers WHERE pupil_id = (SELECT class FROM pupils WHERE name like '%giorgi%');
