@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    public class Program
+    {
+        static int NotContains(int[] numet)
+        {
+            int smallestMissing = 1;
+            while (numet.Contains(smallestMissing))
+            {
+                smallestMissing++;
+            }
+            return smallestMissing;
+        }
+        static void Main(string[] args)
+        {  
+            Console.Write("Enter the length of the array: ");
+            int arrlen = Convert.ToInt32(Console.ReadLine());
+            int[] wholenums = new int[arrlen];
+
+            for (int i = 0; i < arrlen; i++)
+            {
+                Console.Write($"Enter the {i + 1}th member of the array: ");
+                wholenums[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Console.WriteLine($"{NotContains(wholenums)} is the smallest whole number that isn't included in the array.");
+            Console.Write("press any key to exit...");
+            Console.ReadLine();
+        } 
+    }
+}
