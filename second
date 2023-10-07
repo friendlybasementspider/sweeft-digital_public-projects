@@ -1,22 +1,40 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WuteV
+namespace ConsoleApp7
 {
     public class Program
     {
-        static void Main(string[] args)  
-        {  
+        static void Main(string[] args)
+        {
             Console.Write("Enter the amount in cents: ");
-            int cents = Convert.ToInt32(Console.ReadLine());
-            int _50s = cents / 50;
-            int _20s = (cents - (_50s * 50)) / 20;
-            int _10s = (cents - (_50s * 50) - (_20s * 20)) / 10;
-            int _5s = (cents - (_50s * 50) - (_20s * 20) - (_10s * 10)) / 5;
-            int _1s = cents - (_50s * 50) - (_20s * 20) - (_10s * 10) - (_5s * 5);
-            Console.Write($"in order to split the amount in the least amount of change, u would need {_50s} 50 cent(s), {_20s} 20 cent(s), {_10s} 10 cent(s), {_5s} 5 cent(s) and {_1s} 1 cent(s).");
-            //tetrebi centebshi gadaviyvane, 
-            //inglisurad mirchevnia programis dawera.
-            //imedia yvelaze martivi gza avirchie.
-        } 
+            if (int.TryParse(Console.ReadLine(), out int cents))
+            {
+                int _50s = cents / 50;
+                cents %= 50;
+
+                int _20s = cents / 20;
+                cents %= 20;
+
+                int _10s = cents / 10;
+                cents %= 10;
+
+                int _5s = cents / 5;
+                cents %= 5;
+
+                int _1s = cents;
+
+                Console.Write($"To split the amount with the least amount of change, you would need {_50s} 50 cent(s), {_20s} 20 cent(s), {_10s} 10 cent(s), {_5s} 5 cent(s), and {_1s} 1 cent(s).");
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number of cents.");
+            }
+            Console.Write("\npress any key to continue...");
+            Console.ReadKey();
+        }
     }
 }
