@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp7
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static bool IsPalindrome(string input)
         {
-            string input, revinput = string.Empty;
-            Console.Write("Enter a string: ");
-            input = Console.ReadLine();
-
+            string revinput;
+            bool response = false;
             if (!string.IsNullOrEmpty(input))
             {
                 char[] charArray = input.ToCharArray();
@@ -22,19 +20,30 @@ namespace ConsoleApp7
 
                 if (revinput == input)
                 {
-                    Console.WriteLine($"String is a Palindrome. Input = {input} and Output = {revinput}");
+                    response = true;
                 }
                 else
                 {
-                    Console.WriteLine($"String is not a Palindrome. Input = {input} and Output = {revinput}");
+                    response = false;
                 }
+            }
+            return response;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Enter a string: ");
+            string input = Console.ReadLine();
+            if (IsPalindrome(input))
+            {
+                Console.WriteLine("The text is a Palindrome");
             }
             else
             {
-                Console.WriteLine("Input is empty or null.");
+                Console.WriteLine("The text isn't a Palindrome");
             }
-            Console.Write("\npress any key to continue...");
-            Console.ReadKey();
+            Console.Write("\nPress any key to continue...");
+            Console.ReadLine();
         }
     }
 }
