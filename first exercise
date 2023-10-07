@@ -33,7 +33,7 @@ namespace ConsoleApp7
             {
                 Console.WriteLine("Input is empty or null.");
             }
-            Console.Write("press any key to continue...");
+            Console.Write("\npress any key to continue...");
             Console.ReadKey();
         }
     }
