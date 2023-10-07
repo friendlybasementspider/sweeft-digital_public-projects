@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    public class Program
+    {
+        static int MinSplit(int amount)
+        {
+            int totalCoins = 0;
+            int _50s = amount / 50;
+            totalCoins += _50s;
+            amount %= 50;
+            int _20s = amount / 20;
+            totalCoins += _20s;
+            amount %= 20;
+            int _10s = amount / 10;
+            totalCoins += _10s;
+            amount %= 10;
+            int _5s = amount / 5;
+            totalCoins += _5s;
+            amount %= 5;
+            totalCoins += amount;
+            return totalCoins;
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the amount in cents: ");
+            if (int.TryParse(Console.ReadLine(), out int cents))
+            {
+                Console.Write($"To split the amount with the minimum number of (50, 20, 10, 5, 1) coins, you would need {MinSplit(cents)} coin(s).");
+            }
+            else
+            {
+                Console.Write("Invalid input.");
+            }
+            Console.Write("\npress any key to continue...");
+            Console.ReadLine();
+        }
+    }
+}
