@@ -27,7 +27,7 @@ namespace ConsoleApp7
 
                 int _1s = cents;
 
-                Console.Write($"To split the amount with the least amount of change, you would need {_50s} 50 cent(s), {_20s} 20 cent(s), {_10s} 10 cent(s), {_5s} 5 cent(s), and {_1s} 1 cent(s).");
+                Console.Write($"To split the amount with the least amount of change, you would need:\n{_50s} 50 cent(s), {_20s} 20 cent(s), {_10s} 10 cent(s), {_5s} 5 cent(s), and {_1s} 1 cent(s).");
             }
             else
             {
