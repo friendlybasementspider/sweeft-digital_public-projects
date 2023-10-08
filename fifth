@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the number of stairs: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            if (n <= 2)
+            {
+                Console.WriteLine($"The possible number of splits are {n}");
+            }
+            else
+            {
+                Console.WriteLine($"The possible number of splits are {CountVariants(n)}");
+            }
+            Console.WriteLine("press any key to exit...");
+            Console.ReadLine();
+        }
+        static int CountVariants(int stairCount)
+        {
+            int prev = 1;
+            int current = 2;
+            int ways = 0;
+
+            for (int i = 3; i <= stairCount; i++)
+            {
+                ways = prev + current;
+                prev = current;
+                current = ways;
+            }
+            return ways;
+        }
+    }
+}
