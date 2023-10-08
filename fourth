@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the string, consisting of ( and ): ");
+            string input = Console.ReadLine();
+
+            if (IsProperly(input))
+            {
+                Console.WriteLine("The parentheses in the string are mathematically correct.");
+            }
+            else
+            {
+                Console.WriteLine("The parentheses in the string aren't mathematically correct.");
+            }
+            Console.Write("press any key to exit...");
+            Console.ReadLine();
+        }
+
+        static bool IsProperly(string sequence)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            foreach (char c in sequence)
+            {
+                if (c == '(')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')')
+                {
+                    if (stack.Count == 0 || stack.Pop() != '(')
+                    {
+                        return false;
+                    }
+                }
+            }
+            return stack.Count == 0;
+        }
+    }
+}
