@@ -69,7 +69,13 @@ VALUES
 INSERT INTO Teachers (FirstName, LastName, Gender, Subject, Class)
 VALUES
     ('nana', 'chixoria', 'mdedrobiti', 'fizika', 1),
-    ('zurabi', 'kacitadze', 'mamrobiti', 'qimia', 2);
+    ('natela', 'nacvlishvili', 'mdedrobiti', 'matematika', 1),
+    ('beso', 'ravicime', 'mamrobiti', 'biologia', 1),
+    ('zura', 'kirvalidze', 'mamrobiti', 'qimia', 1),
+    ('nikoloz', 'mamardashvili', 'mamrobiti', 'biologia', 2),
+    ('zurabi', 'kacitadze', 'mamrobiti', 'qimia', 2),
+    ('nargiza', 'tediashvili', 'mdedrobiti', 'fizika', 2),
+    ('esma', 'wulukiani', 'mdedrobiti', 'matematika', 2);
 
 INSERT INTO TeacherPupilRelationship (TeacherID, PupilID)
 SELECT
