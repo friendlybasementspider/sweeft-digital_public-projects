@@ -1,0 +1,99 @@
+6.1)
+
+CREATE TABLE Teachers (
+    TeacherID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Gender VARCHAR(10),
+    Subject VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Pupils (
+    PupilID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Gender VARCHAR(10),
+    Class INT NOT NULL
+);
+
+CREATE TABLE TeacherPupilRelationship (
+    RelationshipID INT AUTO_INCREMENT PRIMARY KEY,
+    TeacherID INT NOT NULL,
+    PupilID INT NOT NULL,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID),
+    FOREIGN KEY (PupilID) REFERENCES Pupils(PupilID),
+    UNIQUE (TeacherID, PupilID)
+);
+
+6.2)
+
+CREATE TABLE Teachers (
+    TeacherID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Gender VARCHAR(10),
+    Subject VARCHAR(255) NOT NULL,
+    Class INT NOT NULL
+);
+
+CREATE TABLE Pupils (
+    PupilID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Gender VARCHAR(10),
+    Class INT NOT NULL
+);
+
+CREATE TABLE TeacherPupilRelationship (
+    RelationshipID INT AUTO_INCREMENT PRIMARY KEY,
+    TeacherID INT NOT NULL,
+    PupilID INT NOT NULL,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID),
+    FOREIGN KEY (PupilID) REFERENCES Pupils(PupilID),
+    UNIQUE (TeacherID, PupilID)
+);
+
+INSERT INTO Pupils (FirstName, LastName, Gender, Class)
+VALUES
+    ('giorgi', '____', 'mamrobiti', 1),
+    ('gvanca', '____', 'mdedrobiti', 1),
+    ('nika', '___', 'mamrobiti', 1),
+    ('giorgi', '___', 'mamrobiti', 1),
+    ('luka', '___', 'mamrobiti', 1),
+    ('nodari', '___', 'mamrobiti', 2),
+    ('zura', '___', 'mamrobiti', 2),
+    ('lika', '___', 'mdedrobiti', 2),
+    ('elene', '___', 'mdedrobiti', 2),
+    ('giorgi', '___', 'mamrobiti', 2);
+
+INSERT INTO Teachers (FirstName, LastName, Gender, Subject, Class)
+VALUES
+    ('nana', 'chixoria', 'mdedrobiti', 'fizika', 1),
+    ('zurabi', 'kacitadze', 'mamrobiti', 'qimia', 2);
+
+INSERT INTO TeacherPupilRelationship (TeacherID, PupilID)
+SELECT
+    t.TeacherID,
+    p.PupilID
+FROM
+    Teachers t
+JOIN
+    Pupils p
+ON
+    t.Class = p.Class;
+
+SELECT DISTINCT
+    t.FirstName AS TeacherFirstName,
+    t.LastName AS TeacherLastName
+FROM
+    Teachers t
+JOIN
+    TeacherPupilRelationship r
+ON
+    t.TeacherID = r.TeacherID
+JOIN
+    Pupils p
+ON
+    r.PupilID = p.PupilID
+WHERE
+    p.FirstName = 'giorgi';
