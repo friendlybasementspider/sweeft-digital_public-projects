@@ -1,0 +1,51 @@
+using System;
+using System.IO;
+using System.Net.Http;
+using Newtonsoft.Json;
+
+namespace ConsoleApp8
+{
+    public class CountryData
+    {
+        public string region { get; set; }
+        public string subregion { get; set; }
+        public double[] latlng { get; set; }
+        public double area { get; set; }
+        public long population { get; set; }
+    }
+
+    public class Program
+    {
+        public static void GenerateCountryDataFiles()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = httpClient.GetAsync("https://restcountries.com/v3.1/all").Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonContent = response.Content.ReadAsStringAsync().Result;
+                        CountryData[] countries = JsonConvert.DeserializeObject<CountryData[]>(jsonContent);
+                        string directoryPath = "CountryData";
+                        Directory.CreateDirectory(directoryPath);
+                        foreach (CountryData country in countries)
+                        {
+                            string fileName = $"{country.region}_{country.subregion}.txt";
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            File.WriteAllText(filePath, $"Region: {country.region}\nSubregion: {country.subregion}\nLatlng: {string.Join(", ", country.latlng)}\nArea: {country.area}\nPopulation: {country.population}");
+                        }
+                        Console.WriteLine("Text files created successfully.");
+                    }
+                    else { Console.WriteLine($"API request failed with status code {response.StatusCode}"); }
+                }
+                catch (Exception ex) { Console.WriteLine($"An error occurred: {ex.Message}"); }
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            GenerateCountryDataFiles();
+        }
+    }
+}
